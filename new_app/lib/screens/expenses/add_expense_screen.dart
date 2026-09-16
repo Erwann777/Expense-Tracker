@@ -291,7 +291,10 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> with SingleTickerPr
         Text('How much?', style: GoogleFonts.inter(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white.withValues(alpha: 0.8))),
         const SizedBox(height: 12),
         Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Text(symbol, style: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white.withValues(alpha: 0.8))),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(symbol, style: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white.withValues(alpha: 0.8))),
+          ),
           const SizedBox(width: 4),
           Flexible(
             child: TextFormField(
@@ -350,7 +353,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> with SingleTickerPr
           decoration: BoxDecoration(color: isDark ? AppTheme.darkCard : Colors.white, borderRadius: BorderRadius.circular(AppTheme.radiusMd),
             border: Border.all(color: isDark ? AppTheme.darkDivider : AppTheme.divider)),
           child: Row(children: [Icon(Icons.calendar_today_rounded, size: 20, color: _isIncome ? AppTheme.accentGreen : AppTheme.accentPurple), const SizedBox(width: 10),
-            Text(Formatters.dateShort(_selectedDate), style: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: isDark ? AppTheme.darkText : AppTheme.textPrimary))])),
+            Expanded(child: Text(Formatters.dateShort(_selectedDate), style: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: isDark ? AppTheme.darkText : AppTheme.textPrimary), overflow: TextOverflow.ellipsis, maxLines: 1))])),
       )),
       const SizedBox(width: 12),
       Expanded(child: GestureDetector(
@@ -360,7 +363,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> with SingleTickerPr
           decoration: BoxDecoration(color: isDark ? AppTheme.darkCard : Colors.white, borderRadius: BorderRadius.circular(AppTheme.radiusMd),
             border: Border.all(color: isDark ? AppTheme.darkDivider : AppTheme.divider)),
           child: Row(children: [Icon(Icons.access_time_rounded, size: 20, color: _isIncome ? AppTheme.accentGreen : AppTheme.accentPurple), const SizedBox(width: 10),
-            Text(_selectedTime.format(context), style: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: isDark ? AppTheme.darkText : AppTheme.textPrimary))])),
+            Expanded(child: Text(_selectedTime.format(context), style: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: isDark ? AppTheme.darkText : AppTheme.textPrimary), overflow: TextOverflow.ellipsis, maxLines: 1))])),
       )),
     ]);
   }
